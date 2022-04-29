@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# Midient Todolist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcomet to the awesome Midient Todolist app. The app you will develop is the last missing step in human development. After this app, humanity can rest peacefully as our purpose will be fullfilled. Even if we go extinct, we need not worry as this app has accomplished our objective to the last!
 
-## Available Scripts
+However, the app at its current state is very messy (a repo of crap we may say). And you as a Midient Developer and Uncle Bob's disciple, follow the boy scout rule which says
 
-In the project directory, you can run:
+```
+Always leave the code you are editting a little better than you found it. - Robert Martin (Uncle Bob)
+```
 
-### `yarn start`
+So you make it your lifes quest to take this Todolist app to its fullest.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Starting your Journey to Enlightenment
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Now you go take a look at the files and you don't see `.eslintrc`. "OMG, there is no linting config" you think to yourself! How can we enforce style and fix other problems without linting?!! If we work on this as a team and linting is not configured, the app will be one pile of inconsistent code!
 
-### `yarn test`
+### 1. Add Linting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For Javascript projects, the standard linter is called `ESlint`. `ESlint` can be configured per your needs. And we in Midient have already prepared our default configuration to make your life easy.
 
-### `yarn build`
+Install the required packages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn add --dev eslint @typescript-eslint/parser eslint-config-google eslint-config-midient
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Just as you are copy pasting the above command, Shaytan whispers in your ear "Leave it man, what are you concerning yourself with?! Linting??!! Are you kidding me?? Who has ever gotten anywhere because of lining??! Start doing some real shit!"
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+But haha Shaytan won't get to your enlightened mind! You immediately say to yourself "Investments made early in the beginning will amplify our returns later on" and think visually of the this graph;
+[Going with best practises may slow you down a bit in the beginning, but will boost you later on](https://ibb.co/KmpkNjY)
