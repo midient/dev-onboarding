@@ -34,10 +34,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^5.21.0",
-    "eslint": "^8.14.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-midient": "^1.1.0"
-  }
+  "devDependencies": {}
 }
