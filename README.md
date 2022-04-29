@@ -27,4 +27,4 @@ yarn add --dev eslint @typescript-eslint/parser eslint-config-google eslint-conf
 Just as you are copy pasting the above command, Shaytan whispers in your ear "Leave it man, what are you concerning yourself with?! Linting??!! Are you kidding me?? Who has ever gotten anywhere because of lining??! Start doing some real shit!"
 
 But haha Shaytan won't get to your enlightened mind! You immediately say to yourself "Investments made early in the beginning will amplify our returns later on" and think visually of the this graph;
-[Going with best practises may slow you down a bit in the beginning, but will boost you later on](https://ibb.co/KmpkNjY)
+![Going with best practises may slow you down a bit in the beginning, but will boost you later on](https://user-images.githubusercontent.com/23580433/165930655-474d40bb-aad0-40a7-a47d-5c60202e2ece.jpeg)
