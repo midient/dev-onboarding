@@ -34,5 +34,13 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "prettier": "@midient/prettier-config",
+  "devDependencies": {
+    "@midient/prettier-config": "^1.0.2",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-midient": "^1.2.1",
+    "eslint-plugin-import": "^2.26.0"
+  }
 }

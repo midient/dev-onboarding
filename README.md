@@ -276,3 +276,52 @@ function idGeneratorAdapter() {
 ```
 
 Press save and it will pass again! That is the power of testing. You are now very confident that your function returns pretty whole numbers as string ids with no repitition in the result between different calls.
+
+#### Add Persistence
+
+So we wont go that into detail for adding persistence as its the same thing as above. We will need to write the tests first. Create `localStoragePersistenceAdapter.ts` in `services`, `localStoragePersistence.test.ts` in `services/__tests__` and `persistenceService.ts` in `application`. The test cases will be;
+
+- `can save a string value associated to a key`
+- `returns null for keys with no associated value`
+- `can get back a value by its key`
+
+The test cases reflect the behavior we want from the implementation. Feel free to add test cases if you think they are necessary. This will be the test file;
+
+```
+import {LocalStoragePersistenceAdapter} from '../localStoragePersistenceAdapter';
+
+describe('LocalStorage Persistence Adapter', () => {
+  let lsp: LocalStoragePersistenceAdapter;
+
+  beforeEach(() => {
+    localStorage.clear();
+    lsp = new LocalStoragePersistenceAdapter();
+  });
+
+  test('can save a string value associated to a key', async () => {
+    await lsp.set('key', 'value');
+
+    expect(localStorage.getItem('key')).toBe('value');
+  });
+
+  test('returns null for keys with no associated value', async () => {
+    const result = await lsp.get('non existing key');
+
+    expect(result).toBeNull();
+  });
+
+  test('can get back a value by its key', async () => {
+    await lsp.set('key', 'value');
+
+    const result = await lsp.get('key');
+
+    expect(result).toBe('value');
+  });
+});
+```
+
+You may notice some different things here. The `beforeEach` test hook runs before each test is run to setup the stage. Here, we always clean the localstorage so that each test begins on a new slate. We also reinitialize the `LocalStoragePersistenceAdapter` so that each test runs with a new instance of the class.
+
+The second different this here is that the tests are async. We want the `PersistenceService` methods to be async so that we have the maximum flexibility. Say in the future we make the persistence remote. Remote persistence will 100% need to be async. To avoid redoing it all again in the future, we make it async now.
+
+No you will implement this one yourself. Make sure the tests pass!

@@ -1418,6 +1418,11 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz#0300943770e04231041a51bd39f0439b5c7ab4f0"
   integrity sha512-nkalE/f1RvRGChwBnEIoBfSEYOXnCRdleKuv6+lePbMDrMZXeDQnqak5XDOeBgrPPyPfAdcCu/B5z+v3VhplGg==
 
+"@midient/prettier-config@^1.0.2":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@midient/prettier-config/-/prettier-config-1.0.3.tgz#c3e17a8c4546ef2f67f2cc790d6aeafc7b7a8958"
+  integrity sha512-0JLXQMtQOdtG4LvqY0Zaxcoe4n3CFf7NpMBWjHVWgAvJv7w7l+Clbb55Qu6utYTifqAxbDYUFvQPI2YjS7NjPg==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -3795,12 +3800,13 @@ eslint-config-google@^0.14.0:
   resolved "https://registry.yarnpkg.com/eslint-config-google/-/eslint-config-google-0.14.0.tgz#4f5f8759ba6e11b424294a219dbfa18c508bcc1a"
   integrity sha512-WsbX4WbjuMvTdeVL6+J3rK1RGhCTqjsFjX7UMSMgZiyxxaNLkoJENbrGExzERFeoTpGw3F3FypTiWAP9ZXzkEw==
 
-eslint-config-midient@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-midient/-/eslint-config-midient-1.1.0.tgz#cc538a995555a949a98252a065639d7d707b684b"
-  integrity sha512-9jxhUL3rPOFoGc/whWcvnJ4kNzIsvn4gGfknjnkfhsO3A39hh7wW5SLL4/j89vtt+PJYo0NJm0uGGL6BGifw3g==
+eslint-config-midient@^1.2.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-midient/-/eslint-config-midient-1.2.2.tgz#5021ec686515bb52f7dcbb5d9ccf83d9e024750b"
+  integrity sha512-ACfoA1j+jwRyyLQ2GTBYd1OHwsvp7VECXVoiRlpfbt6diKAgXRGyGfG5j71pQ8T0rXjHAPDl2FIZIRuBZ7Akbw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.21.0"
+    eslint-plugin-import "^2.26.0"
     eslint-plugin-react "^7.29.4"
 
 eslint-config-react-app@^7.0.1:
@@ -3847,7 +3853,7 @@ eslint-plugin-flowtype@^8.0.3:
     lodash "^4.17.21"
     string-natural-compare "^3.0.1"
 
-eslint-plugin-import@^2.25.3:
+eslint-plugin-import@^2.25.3, eslint-plugin-import@^2.26.0:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.26.0.tgz#f812dc47be4f2b72b478a021605a59fc6fe8b88b"
   integrity sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==
