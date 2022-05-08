@@ -1,24 +1,34 @@
-import React, {FormEventHandler, MouseEventHandler, useEffect, useState} from 'react';
-import idGeneratorAdapter from './services/idGeneratorAdapter';
-import {LocalStoragePersistenceAdapter} from './services/localStoragePersistenceAdapter';
-import {useTodoStorageService} from './services/todoStorageAdapter';
+import React, {
+  ChangeEventHandler,
+  FormEventHandler,
+  MouseEventHandler,
+  useEffect,
+  useState,
+} from 'react';
 
 function App() {
-  const {todos, addTodo, deleteTodo} = useTodoStorageService(new LocalStoragePersistenceAdapter(), idGeneratorAdapter);
   const [isAdding, setAdding] = useState(false);
+  const [todos, setTodos] = useState([] as string[]);
   const [newTodo, setNewTodo] = useState('');
 
   useEffect(() => {
     const hasOpenedBefore = localStorage.getItem('hasOpenedBefore');
 
     if (!hasOpenedBefore) {
-      addTodo({
-        text: 'This is a sample todo to get you started. It is only added if it is your first time opening our awesome app!',
-      });
+      updateTodos([
+        'This is a sample todo to get you started. It is only added if it is your first time opening our awesome app!',
+      ]);
       localStorage.setItem('hasOpenedBefore', 'true');
     }
+
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
+
+    setTodos(todos);
   }, []);
 
+  const todoInputHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setNewTodo(e.target.value);
+  };
   const addClickHandler: MouseEventHandler = () => {
     if (isAdding) {
       setAdding(false);
@@ -29,9 +39,19 @@ function App() {
   };
   const submitHandler: FormEventHandler = (e) => {
     e.preventDefault();
-    addTodo({text: newTodo});
+    updateTodos([...todos, newTodo]);
     setAdding(false);
     setNewTodo('');
+  };
+  const removeBtnHandler = (index: number) => {
+    const clone = [...todos];
+
+    clone.splice(index, 1);
+    updateTodos(clone);
+  };
+  const updateTodos = (todos: string[]) => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    setTodos(todos);
   };
 
   return (
@@ -43,18 +63,21 @@ function App() {
 
       {isAdding && (
         <form onSubmit={submitHandler} style={{margin: '12px'}}>
-          <input type="text" onChange={(e) => setNewTodo(e.target.value)} />
+          <input type="text" onChange={todoInputHandler} />
           <input type="submit" />
         </form>
       )}
 
       <ol>
-        {todos.map((t) => (
-          <li key={t.id}>
-            <button style={{WebkitMarginEnd: '8px'}} onClick={() => deleteTodo(t.id)}>
+        {todos.map((t, index) => (
+          <li key={t}>
+            <button
+              style={{WebkitMarginEnd: '8px'}}
+              onClick={() => removeBtnHandler(index)}
+            >
               X
             </button>
-            <span>{t.text}</span>
+            <span>{t}</span>
           </li>
         ))}
       </ol>

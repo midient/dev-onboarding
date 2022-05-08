@@ -1,11 +1,11 @@
 # Midient Todolist
 
-Welcome to the awesome Midient Todolist app. The app you will develop is the last missing step in human development. After this app, humanity can rest peacefully as our purpose will be fulfilled. Even if we go extinct, we need not worry as this app has accomplished our objectives to the last!
+Welcomet to the awesome Midient Todolist app. The app you will develop is the last missing step in human development. After this app, humanity can rest peacefully as our purpose will be fullfilled. Even if we go extinct, we need not worry as this app has accomplished our objectives to the last!
 
 However, the app at its current state is very messy (a repo of crap we may say). And you as a Midient Developer and Uncle Bob's disciple, follow the boy scout rule which says
 
 ```
-Always leave the code you are editing a little better than you found it. - Robert Martin (Uncle Bob)
+Always leave the code you are editting a little better than you found it. - Robert Martin (Uncle Bob)
 ```
 
 So you make it your life's purpose to take this Todolist app to its fullest.
@@ -38,15 +38,15 @@ yarn add --dev eslint @typescript-eslint/parser eslint-config-google eslint-conf
 Just as you are copy pasting the above command, Shaytan whispers in your ear "Leave it man, what are you concerning yourself with?! Linting??!! Are you kidding me?? Who has ever gotten anywhere because of linting??! Start doing some real shit!"
 
 But haha Shaytan won't get to your enlightened mind! You immediately say to yourself "Investments made early in the beginning will multiply returns later on" and think visually of the this graph;
-![Going with best practices may slow you down a bit in the beginning, but will boost you later on](https://user-images.githubusercontent.com/23580433/165930655-474d40bb-aad0-40a7-a47d-5c60202e2ece.jpeg)
+![Going with best practises may slow you down a bit in the beginning, but will boost you later on](https://user-images.githubusercontent.com/23580433/165930655-474d40bb-aad0-40a7-a47d-5c60202e2ece.jpeg)
 
-This graph shows productivity for two people. One following best practices and the other not. The one following best practices is slow initially in adding features because he is busy setting up, while the other one is fast in adding features initially. But soon, the circumstances change. The code has grown and entangled and the situation reverses.
+This graph shows productivity for two people. One following best practises and the other not. The one following best practices is slow initially in adding features because he is busy setting up, while the other one is fast in adding features initially. But soon, the circumstances change. The code has grown and entangled and the situation reverses.
 
-It is very much like preparing dinner. If you don't care about the kitchen and use whatever you can get your hands on and not clean the kitchen after dinner, it will get a little more difficult and slower to cook dinner the second day as all the unwashed and dirty dishes will stand in your way. If you don't come to your senses the second dinner and not clean, it will be a little more difficult the third time. If you never clean, eventually it will be impossible to cook dinner in your kitchen because there will be no clean tool to cook it with!
+It is very much like preparing dinner. If you dont care about the kitchen and use whatever you can get your hands on and not clean the kitchen after dinner, it will get a little more difficult and slower to cook dinner the second day as all the unwashed and dirty dishes will stand in your way. If you dont come to your senses the second dinner and not clean, it will be a little more difficult the third time. If you never clean, eventually it will be impossible to cook dinner in your kitchen because there will be no clean tool to cook it with!
 
 This is precisely the thing that happens with so many companies. Sadly, it even happened to us. Although we thought we knew these, we did not actually practice them for a time under the justification of increasing market demand! However, we have learned our lesson and never again will we abandon high coding standards!
 
-This why you have to follow best practices. You don't intend your awesome Todolist app to be in stores for a day, you see it as the pinnacle of human development that all humanity will use for the coming decades!
+This why you have to follow best practises. You don't intend your awesome Todolist app to be in stores for a day, you see it as the pinaccle of human development that all humanity will use for the coming decades!
 
 Now that you have installed the packages, its time to add the eslint config.
 Create a new file with the name `.eslintrc.yml` and add the following code inside;
@@ -100,11 +100,11 @@ Now when you dummy edit `index.tsx` or any other file and save it, it will be li
 
 Now you go checkout `App.tsx`. cht bini oh cht bini!! All the app is in one 90 liner file! Application code (the logic of our app) is right next to styling code, which is right next to third party storage code (we consider `localStorage` third party) which is right next to IO code (buttons and inputs). There is no structure given to a `Todo` item! There is no separation of responsibilities and there is no abstractions! UNACCEPTABLE!
 
-This code is bad because it is hard to change. Say for example we want to advance the application and add remote storage for todo items instead of using local storage and fetch them over an API. There is no clear class that we can replace to handle the job without change to the whole application. Or we want to add categories, it will be be very difficult again. They are doable, but instead of being able to do it in 10 minutes, it would take an hour or so. And believe me, real life is FULL of these changes! Marketing demands a change they think is simple for their upcoming campaign. Sales demands a change they think is trivial to satisfy their precious customer. End users want something else. Life is full of changes you will have to make. So the bottom line is, code needs to be easy to change. As easy as you can make it!
+This code is bad because it is hard to change. Say for example we want to advance the application and add remote storage for todo items instead of using local storage and fetch them over an API. There is no clear class that we can replace to handle the job without change to the whole application. Or we want to add categories, it will be be very difficult again. They are doable, but intead of being able to do it in 10 minutes, it would take an hour or so. And believe me, real life is FULL of these changes! Marketing demands a change they think is simple for their upcoming campaigne. Sales demands a change they think is trivial to satisfy their precious customer. End users want something else. Life is full of changes you will have to make. So the buttom line is, code needs to be easy to change. As easy as you can make it!
 
 Uncle Bob asks this question about a hypothetical situation. If you had to decide between a code that works but is very hard to change and a code that does not work but is very easy to change, which one would you choose?
 
-The answer should be the code that is not working but is easy to change. Because by definition the code's easiness to change will make it work in the future even if its not working now! But the code that is hard to change, even if its working, is useless. Because real life is characterized by change. They say the only thing that is constant and does not change in the universe is change itself (I know Pie does not change as well you nerd! It is metaphorical, you get the point).
+The answer should be the code that is not working but is easy to change. Because by definition the code's easyness to change will make it work in the future even if its not working now! But the code that is hard to change, even if its working, is useless. Becuase real life is characterized by change. They say the only thing that is constant and does not change in the universe is change itself (I know Pie does not change as well you nerd! It is metaphorical, you get the point).
 
 "At least it must have been tested" you think to yourself. So you check out `App.test.tsx`. WHAT? it renders?? Is that all the testing??
 
@@ -114,7 +114,7 @@ For a quick introduction to testing in general read [this excellent article](htt
 
 ### 5. The New Architecture
 
-We will refactor the code to adopt the principles of 'Clean Architecture'. Clean Architecture is formulated by Uncle Bob and describes it thoroughly in his book 'Clean Architecture'. Since it is a 400-page book, it is not required for this article. But it is definitely a must read by every software engineer. However, you still need to have an introduction to what Clean Architecture is. So you must read [this article](https://dev.to/bespoyasov/clean-architecture-on-frontend-4311) before you continue. Read [this article](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/) as well.
+We will refactor the code to adopt the principles of 'Clean Architecutre'. Clean Architecture is formulated by Uncle Bob and describes it thoroughly in his book 'Clean Architecture'. Since it is a 400-page book, it is not required for this article. But it is definitely a must read by every software engineer. However, you still need to have an introduction to what Clean Architecture is. So you must read [this article](https://dev.to/bespoyasov/clean-architecture-on-frontend-4311) before you continue. Read [this article](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/) as well.
 
 After refreshing your knowledge with the above articles, you take a peek at the code again. You notice that the code has the following components to it
 
@@ -133,7 +133,7 @@ Now you decide to get your hands dirty. This is the strategy
 
 - You need domain level entities first. So add `Todo` entity in domain.
 - You need a way to generate ids for todos. So add ports and implementations for an `idGenerator`.
-- You need to have persistence. So add `persistencePort` and implement it using `localStoragePersistenceAdapter`.
+- You need to have persistence. So add `persistencePort` and implement it using `localstroragePersistenceAdapter`.
 - You need `todoStorageService`. So implement it in application with dependency on persistence.
 - You need `introductionService`. It can be implemented in application with dependency on persistence and todo storage.
 
@@ -159,7 +159,7 @@ You also decided to add `id` to `Todo` because it is much better to work with to
 
 #### Add ID generator
 
-As we will TDD, we will start with tests first. Create `idGeneratorAdapter.test.ts` in `services/__tests__` folder and add the following boilerplate to prepare the file;
+As we will TDD, we will start with tests first. Create `idGenetaorAdapter.test.ts` in `services/__tests__` folder and add the following boilerplate to prepare the file;
 
 ```
 describe('ID Generator', () => {
@@ -169,7 +169,7 @@ describe('ID Generator', () => {
 
 Run `yarn test` to run the jest. You will see that the test suite fails to run as you have no test in ID Generator describe block.
 
-When we say 'testing' in TDD, we mean testing behavior. To test behavior, our code should have a clear input and output. We change the input, and expect a desired output. If a certain input does not produce our desired output, the test will fail and we can fix the issue.
+When we say 'testing' in TDD, we mean testing behaviour. To test behaviour, our code should have a clear input and output. We change the input, and expect a desired output. If a certian input does not produce our desired output, the test will fail and we can fix the issue.
 
 For testing id generator, we need a function that generates an id. In the case of id generation, we have no input. But we clearly want an output which will be the id. So the only test case for id generator that comes to mind is;
 
@@ -275,7 +275,7 @@ function idGeneratorAdapter() {
 }
 ```
 
-Press save and it will pass again! That is the power of testing. You are now very confident that your function returns pretty whole numbers as string ids with no repetition in the result between different calls.
+Press save and it will pass again! That is the power of testing. You are now very confident that your function returns pretty whole numbers as string ids with no repitition in the result between different calls.
 
 #### Add Persistence
 
@@ -284,7 +284,6 @@ So we wont go that into detail for adding persistence as its the same thing as a
 - `can save a string value associated to a key`
 - `returns null for keys with no associated value`
 - `can get back a value by its key`
-- `can delete all values`
 
 The test cases reflect the behavior we want from the implementation. Feel free to add test cases if you think they are necessary. This will be the test file;
 
@@ -318,93 +317,11 @@ describe('LocalStorage Persistence Adapter', () => {
 
     expect(result).toBe('value');
   });
-
-  test('can delete all values', async () => {
-    await lsp.set('key', 'value');
-    await lsp.set('key2', 'value2');
-
-    await lsp.deleteAll();
-
-    await expect(lsp.get('key')).resolves.toBeNull();
-    await expect(lsp.get('key2')).resolves.toBeNull();
-  });
 });
 ```
 
 You may notice some different things here. The `beforeEach` test hook runs before each test is run to setup the stage. Here, we always clean the localstorage so that each test begins on a new slate. We also reinitialize the `LocalStoragePersistenceAdapter` so that each test runs with a new instance of the class.
 
-The second difference here is that the tests are async. We want the `PersistenceService` methods to be async so that we have the maximum flexibility. Say in the future we make the persistence remote. Remote persistence will 100% need to be async. To avoid redoing it all again in the future, we make it async now.
+The second different this here is that the tests are async. We want the `PersistenceService` methods to be async so that we have the maximum flexibility. Say in the future we make the persistence remote. Remote persistence will 100% need to be async. To avoid redoing it all again in the future, we make it async now.
 
-Now you will implement this one yourself. Make sure the tests pass!
-
-#### Add TodoStorageService
-
-After we have a functioning persistence service, we can go on to implement `TodoStorageService`.
-
-`TodoStorageService` will need to keep the todos in local state so that changes to the todos are reflected in the react UI. This is its implementation needs to be in the form of a hook `useTodoStorageService`. This hooks returns the `TodoStorageService` attributes and methods i.e. implements the interface for the return value.
-
-The behavior we are expecting from the implementation of `TodoStorageService` is as follows;
-
-- `provides todos in the local state`
-- `loads todos from persistence into local state upon initializing`
-- `creates todos with automatically added ids and persistence`
-- `deletes todos by id`
-
-You will need the [`testing-library/react-hooks`](https://react-hooks-testing-library.com/installation) to test it. So go ahead and install it.
-
-These are the tests for `TodoStorageService`. Copy the tests and make them pass.
-
-```
-const persistence = new LocalStoragePersistenceAdapter() as PersistenceService;
-const idGen = () => 'mock-id';
-
-describe('Todo Storage Adapter', () => {
-  beforeEach(async () => {
-    await persistence.deleteAll();
-  });
-
-  test('provides todos in the local state', async () => {
-    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
-    await waitForNextUpdate();
-
-    expect(result.current.todos).toStrictEqual([]);
-  });
-
-  test('loads todos from persistence into local state upon initializing', async () => {
-    await persistence.set('todos', JSON.stringify(['todo1', 'todo2']));
-
-    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
-    await waitForNextUpdate();
-
-    expect(result.current.todos).toStrictEqual(['todo1', 'todo2']);
-  });
-
-  test('creates todos with automatically added ids and persistence', async () => {
-    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
-    await waitForNextUpdate();
-
-    act(() => {
-      result.current.addTodo({text: 'sample todo'});
-    });
-
-    expect(result.current.todos).toStrictEqual([{id: 'mock-id', text: 'sample todo'}]);
-    await expect(persistence.get('todos')).resolves.toBe(JSON.stringify([{id: 'mock-id', text: 'sample todo'}]));
-  });
-
-  test('deletes todos by id', async () => {
-    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
-    await waitForNextUpdate();
-    act(() => {
-      result.current.addTodo({text: 'sample todo'});
-    });
-
-    act(() => {
-      result.current.deleteTodo('mock-id');
-    });
-
-    expect(result.current.todos).toStrictEqual([]);
-    await expect(persistence.get('todos')).resolves.toBe(JSON.stringify([]));
-  });
-});
-
-```
+No you will implement this one yourself. Make sure the tests pass!
