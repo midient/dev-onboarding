@@ -112,6 +112,12 @@ There are many improvements you will have to make to this code. So get excited. 
 
 For a quick introduction to testing in general read [this excellent article](https://martinfowler.com/articles/practical-test-pyramid.html) by Martin Fowler (really read it, we are in no hurry). When you finish that, to see the power of TDD and Pair Programming in designing (and refactoring) an application, read [even more legendary article](https://sites.google.com/site/unclebobconsultingllc/home/articles/the-bowling-game-an-example-of-test-first-pair-programming) by Uncle Bob. Read them both, these guys are the legends of our world! They are the Khalidi kuri Waleeds, the supermen, spidermen (and all the other Marvel heros) of the software world. PS: before reading the article by Uncle Bob, you would want to have a solid grasp on the rules of Bowling game. So watch some youtube videos on it first.
 
+The above articles are mainly tell you why you need to test. To know how you can actually run unit testing in jest, read the following guides
+
+- [Mock Functions](https://jestjs.io/docs/mock-functions)
+- [Manual Mocks](https://jestjs.io/docs/manual-mocks)
+- [ES6 Class Mocks](https://jestjs.io/docs/es6-class-mocks)
+
 ### 5. The New Architecture
 
 We will refactor the code to adopt the principles of 'Clean Architecture'. Clean Architecture is formulated by Uncle Bob and describes it thoroughly in his book 'Clean Architecture'. Since it is a 400-page book, it is not required for this article. But it is definitely a must read by every software engineer. However, you still need to have an introduction to what Clean Architecture is. So you must read [this article](https://dev.to/bespoyasov/clean-architecture-on-frontend-4311) before you continue. Read [this article](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/) as well.
