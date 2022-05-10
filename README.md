@@ -118,6 +118,10 @@ The above articles are mainly tell you why you need to test. To know how you can
 - [Manual Mocks](https://jestjs.io/docs/manual-mocks)
 - [ES6 Class Mocks](https://jestjs.io/docs/es6-class-mocks)
 
+### 5. Improve the Code
+
+Before continuing to the next section, try to improve the code on your own (if you think it needs improvement). Give it half an hour, see how you can improve the code. Any improvement you deem needed is welcome. However, do the changes in a new branch so you can come back to the original code.
+
 ### 5. The New Architecture
 
 We will refactor the code to adopt the principles of 'Clean Architecture'. Clean Architecture is formulated by Uncle Bob and describes it thoroughly in his book 'Clean Architecture'. Since it is a 400-page book, it is not required for this article. But it is definitely a must read by every software engineer. However, you still need to have an introduction to what Clean Architecture is. So you must read [this article](https://dev.to/bespoyasov/clean-architecture-on-frontend-4311) before you continue. Read [this article](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/) as well.
@@ -414,3 +418,46 @@ describe('Todo Storage Adapter', () => {
 });
 
 ```
+
+#### Refactor `App.tsx`
+
+Refactor `App.tsx` to use the new services (persistence and todo storage services). Make it functional with the new services.
+
+### 7. CI/CD
+
+In 2017, a big survey was conducted and the results were published in '2017 State of DevOps Report'. A large number of companies were surveyed with a wide range of performance. According to the results of the survey, CI/CD had a huge impact on a companies performance and culture. If you would like to read a summary on the report, you can read [this article](https://techbeacon.com/app-dev-testing/state-devops-2017-5-key-takeaways).
+
+CI/CD are more like practices than tools or techniques. They are very important for working in a 'Lean' way. They especially promote working in very small chunks and shortening the feedback loops across developers. CI/CD is very big subject and we can barely scratch the surface here. Watch [this five-minute youtube video](https://www.youtube.com/watch?v=1er2cjUq1UI&ab_channel=IBMTechnology) by IBM to get a little more understanding on the backgrounds of CI.
+
+Now you need to implement a CI/CD pipeline using Github Actions which tests and deploys all push events on your github repo to heroku. After this step, you will have deployed the Midient Todolist app on heroku for all the world to enjoy!
+
+### 8. Back to Code
+
+After you have deployed and hosted the app on heroku and implemented a complete CI/CD pipeline, you can start building the last missing part of the complete app, which is the introduction service. The introduction service does the following;
+
+- If its the first time the user opens the app, it introduces the app by inserting a sample todo.
+- If it is not the users first time, do nothing.
+  That simple!
+
+We will leave all the development of the introduction service up to you. Don't forget to TDD!
+
+### 9. Bringing it All Together
+
+After you are done implementing the introduction service, its time to bring it all together in the `App.tsx`. The introduction service and the todo storage services. `App.tsx` which is in IO layer will just map the users actions to commands for our services and show back the results to the user.
+
+For backend apps, testing the IO layer is usually less important than testing the application layer as there is no complicated logic happening in them. However, for frontend apps the IO logic, which includes the UI and its functionality can get pretty complicated. That is why it is a good practice to also test the app from the entry point which is `App.tsx` to see if its working from the users perspective.
+
+React by default has created a file for you called `App.test.tsx`. It contains only one simple test by default. No you can go ahead and test all the different user actions and behaviors that are intended for the app. Some of them are;
+
+- User can see a list of todos.
+- User can add a todo.
+- User can delete a todo.
+- User gets an onboarding todo on first open.
+
+Feel free to add others if you think they are necessary.
+
+This is called an integration test. In unit testing, you make sure that a particular piece of your app is working perfectly. In integration testing, you make sure that the different pieces throughout your app all work together to achieve the desired results.
+
+### 10. Done!
+
+You are done! You are now qualified to start working on Midient's production systems in a regulated manner!
