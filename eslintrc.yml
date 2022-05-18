@@ -1,0 +1,5 @@
+env:
+  # this is needed to enable the global variables in the browser environment such document, window, ...etc
+  browser: true
+extends:
+  - midient # You are fond of Midient standards for linting
