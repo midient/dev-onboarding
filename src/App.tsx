@@ -20,15 +20,19 @@ function App() {
       ]);
       localStorage.setItem('hasOpenedBefore', 'true');
     }
-
-    const todos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
-
-    setTodos(todos);
+    loadTodos()
+    
   }, []);
+
+  const loadTodos = () => {
+    const todos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
+    setTodos(todos);
+  }
 
   const todoInputHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value);
   };
+
   const addClickHandler: MouseEventHandler = () => {
     if (isAdding) {
       setAdding(false);
@@ -37,18 +41,21 @@ function App() {
       setAdding(true);
     }
   };
+
   const submitHandler: FormEventHandler = (e) => {
     e.preventDefault();
     updateTodos([...todos, newTodo]);
     setAdding(false);
     setNewTodo('');
   };
+
   const removeBtnHandler = (index: number) => {
     const clone = [...todos];
 
     clone.splice(index, 1);
     updateTodos(clone);
   };
+
   const updateTodos = (todos: string[]) => {
     localStorage.setItem('todos', JSON.stringify(todos));
     setTodos(todos);
