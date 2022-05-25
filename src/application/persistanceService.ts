@@ -4,9 +4,9 @@ export type getService = () => Promise<string>
 export type setService = (key: string) => void
 export type deleteAllService = () => void
 
-export interface LocalStoragePersistenceServices {
-    get(key: string): Promise<string>
-    getAll(): Promise<Array<Todo>>
-    set(key: string, value: string): Promise<void>
-    deleteAll(): Promise<void>
+export interface PersistenceServices {
+    get(key: string): Promise<string | null>
+    getAll(): Promise<unknown>
+    set(key: string, value: string): Promise<unknown>
+    deleteAll(): Promise<unknown>
 }

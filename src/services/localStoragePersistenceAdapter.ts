@@ -1,20 +1,18 @@
 
-import { LocalStoragePersistenceServices } from "../application/persistanceService";
+import { PersistenceServices } from "../application/persistanceService";
 import { Todo } from "../domain/Todo";
 
-export default class LocalStoragePersistanceAdapter implements LocalStoragePersistanceAdapter {
-    get(key: string) {
-        return new Promise((resolve, reject) => {
-            const result = localStorage.getItem(key);
-            resolve(result)
-        })
+export default class LocalStoragePersistanceAdapter implements PersistenceServices {
+
+    async get(key: string): Promise<string | null> {
+        return localStorage.getItem(key)
     }
-    
-    set(key: string, value: string){
+
+    async set(key: string, value: string): Promise<void> {
         localStorage.setItem(key, value);
     }
     
-    deleteAll(){
+    async deleteAll(): Promise<void> {
         localStorage.clear();
     }
 

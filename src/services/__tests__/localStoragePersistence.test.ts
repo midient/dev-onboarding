@@ -11,7 +11,7 @@ describe("Persistence Adapter", () => {
     })
     
     test('can save a string value associated to a key', async () => {
- 
+
         await lsp.set("key", "value");
 
         const returnedValue = await lsp.get("key");
@@ -53,7 +53,9 @@ describe("Persistence Adapter", () => {
 
         await lsp.set("key", "value");
         await lsp.set("key1", "value1");
+
         const returnedArray = await lsp.getAll() as Array<Todo>
+        
         expect(returnedArray.length).toBeDefined()
         expect(returnedArray[0].id).toBe("key")
     });
