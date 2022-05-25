@@ -1,30 +1,14 @@
-import React, {
-  ChangeEventHandler,
-  FormEventHandler,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from 'react';
+import React, {ChangeEventHandler, FormEventHandler, MouseEventHandler, useState} from 'react';
+import {idGeneratorService} from './application/idGeneratorService';
+import {PersistenceService} from './application/persistenceService';
+import {useTodoStorageService} from './services/todoStorageAdapter';
+import {useIntroductionService} from './services/useIntroductionService';
 
-function App() {
+function App(props: {persistence: PersistenceService; idGen: idGeneratorService}) {
+  const tss = useTodoStorageService(props.persistence, props.idGen);
+  useIntroductionService(props.persistence, tss);
   const [isAdding, setAdding] = useState(false);
-  const [todos, setTodos] = useState([] as string[]);
   const [newTodo, setNewTodo] = useState('');
-
-  useEffect(() => {
-    const hasOpenedBefore = localStorage.getItem('hasOpenedBefore');
-
-    if (!hasOpenedBefore) {
-      updateTodos([
-        'This is a sample todo to get you started. It is only added if it is your first time opening our awesome app!',
-      ]);
-      localStorage.setItem('hasOpenedBefore', 'true');
-    }
-
-    const todos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
-
-    setTodos(todos);
-  }, []);
 
   const todoInputHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value);
@@ -39,19 +23,9 @@ function App() {
   };
   const submitHandler: FormEventHandler = (e) => {
     e.preventDefault();
-    updateTodos([...todos, newTodo]);
+    tss.addTodo({text: newTodo});
     setAdding(false);
     setNewTodo('');
-  };
-  const removeBtnHandler = (index: number) => {
-    const clone = [...todos];
-
-    clone.splice(index, 1);
-    updateTodos(clone);
-  };
-  const updateTodos = (todos: string[]) => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-    setTodos(todos);
   };
 
   return (
@@ -69,15 +43,12 @@ function App() {
       )}
 
       <ol>
-        {todos.map((t, index) => (
-          <li key={t}>
-            <button
-              style={{WebkitMarginEnd: '8px'}}
-              onClick={() => removeBtnHandler(index)}
-            >
+        {tss.todos.map((t) => (
+          <li key={t.id}>
+            <button style={{WebkitMarginEnd: '8px'}} onClick={() => tss.deleteTodo(t.id)}>
               X
             </button>
-            <span>{t}</span>
+            <span>{t.text}</span>
           </li>
         ))}
       </ol>

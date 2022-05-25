@@ -362,15 +362,29 @@ The behavior we are expecting from the implementation of `TodoStorageService` is
 
 You will need the [`testing-library/react-hooks`](https://react-hooks-testing-library.com/installation) to test it. So go ahead and install it.
 
-These are the tests for `TodoStorageService`. Copy the tests and make them pass.
+These are the tests for `TodoStorageService`. Copy the tests and make them pass. Start from the test one. When you work on your tests, it is good to increase your focus by isolating your tests by `test.only(...)` while you are working on them.
 
 ```
 const persistence = new LocalStoragePersistenceAdapter() as PersistenceService;
-const idGen = () => 'mock-id';
+let idGen: idGeneratorService;
 
 describe('Todo Storage Adapter', () => {
   beforeEach(async () => {
+    idGen = jest.fn().mockReturnValue('mock-id');
     await persistence.deleteAll();
+  });
+
+  test('loads todos from persistence into local state upon initializing', async () => {
+    const todos = [
+      {id: '1', text: 'todo1'},
+      {id: '2', text: 'todo2'},
+    ];
+    await persistence.set('todos', JSON.stringify(todos));
+
+    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
+    await waitForNextUpdate();
+
+    expect(result.current.todos).toStrictEqual(todos);
   });
 
   test('provides todos in the local state', async () => {
@@ -378,15 +392,6 @@ describe('Todo Storage Adapter', () => {
     await waitForNextUpdate();
 
     expect(result.current.todos).toStrictEqual([]);
-  });
-
-  test('loads todos from persistence into local state upon initializing', async () => {
-    await persistence.set('todos', JSON.stringify(['todo1', 'todo2']));
-
-    const {result, waitForNextUpdate} = renderHook(() => useTodoStorageService(persistence, idGen));
-    await waitForNextUpdate();
-
-    expect(result.current.todos).toStrictEqual(['todo1', 'todo2']);
   });
 
   test('creates todos with automatically added ids and persistence', async () => {
@@ -416,7 +421,6 @@ describe('Todo Storage Adapter', () => {
     await expect(persistence.get('todos')).resolves.toBe(JSON.stringify([]));
   });
 });
-
 ```
 
 #### Refactor `App.tsx`
@@ -430,6 +434,8 @@ In 2017, a big survey was conducted and the results were published in '2017 Stat
 CI/CD are more like practices than tools or techniques. They are very important for working in a 'Lean' way. They especially promote working in very small chunks and shortening the feedback loops across developers. CI/CD is very big subject and we can barely scratch the surface here. Watch [this five-minute youtube video](https://www.youtube.com/watch?v=1er2cjUq1UI&ab_channel=IBMTechnology) by IBM to get a little more understanding on the backgrounds of CI.
 
 Now you need to implement a CI/CD pipeline using Github Actions which tests and deploys all push events on your github repo to heroku. After this step, you will have deployed the Midient Todolist app on heroku for all the world to enjoy!
+
+To learn about Github Actions, watch this 30 minute [video](https://www.youtube.com/watch?v=R8_veQiYBjI).
 
 ### 8. Back to Code
 
@@ -458,6 +464,70 @@ Feel free to add others if you think they are necessary.
 
 This is called an integration test. In unit testing, you make sure that a particular piece of your app is working perfectly. In integration testing, you make sure that the different pieces throughout your app all work together to achieve the desired results.
 
-### 10. Done!
+### 10. Going to Over to the Backend
 
-You are done! You are now qualified to start working on Midient's production systems in a regulated manner!
+Just after you are done with the first version of the Todo list app running like charm locally and are just about to celebrate, someone over at marketing makes a company wide rhetorical call for our app to save todos on remotely! Why GOD WHY?! Just when you finished! Why couldn't they have known sooner??!
+
+No need to be afraid my friend. Remember all these services you put in the app? They come to the rescue now. You just need another implementation of the `PersistenceService` which persists the key and values remotely over an API.
+
+Create a new project to code your backend in. We use NestJS as framework for Node. Read these guides to from their documentation for an introduction;
+
+- [Introduction](https://docs.nestjs.com/)
+- [First Steps](https://docs.nestjs.com/first-steps)
+- [Controllers](https://docs.nestjs.com/controllers)
+- [Providers](https://docs.nestjs.com/providers)
+- [Modules](https://docs.nestjs.com/modules)
+
+Don't go the next step unless you have created a working bare bones server hosted on heroku and uses Github Actions for as a CI pipeline.
+
+### 11. Adding the `KeyValueStorage` API
+
+Configure the file structure in the backend just like the frontend with each of the layers in Clean Architecture represented by a different folder. Everything belonging to NestJs goes to `io` as Nest is a framework and the framework is considered a detail, not core, in the Clean Architecture.
+
+1. Create `key.value.storage.service.ts` in `application`.
+
+```
+interface KeyValueStorageService {
+  set(key: string, value: unknown): Promise<void>;
+  get(key: string): Promise<string>;
+  deleteAll(): Promise<void>;
+}
+```
+
+2. Create `key.value.storage` folder in `io` and add `key.value.controller.ts`;
+
+```
+export const KEY_VALUE_STORAGE_SERVICE = 'KeyValueStorageService'
+
+@Controller('key')
+export class KeyValueController {
+  constructor(@Inject(KEY_VALUE_STORAGE_SERVICE) private keyValueStorage: KeyValueStorageService) {}
+
+  @Get(':key')
+  async get(@Param('key') key: string) {
+    return this.keyValueStorage.get(key);
+  }
+
+  @Post(':key')
+  async set(@Param('key') key: string, @Body('value') value: unknown) {
+    await this.keyValueStorage.set(key, value);
+  }
+
+  @Delete('')
+  async deleteAll() {
+    return this.keyValueStorage.deleteAll();
+  }
+}
+
+```
+
+and `key.value.module.ts`
+
+```
+@Module({
+    controllers: [KeyValueController],
+    // InProcessKeyValueStorageAdapter is an implementation of KeyValueStorageService, which you will implement next
+    providers: [{ provide: KEY_VALUE_STORAGE_SERVICE, useClass: InProcessKeyValueStorageAdapter }]
+})
+export class KeyValueModule {}
+```
