@@ -12,7 +12,6 @@ import idGeneratorAdapter from './services/idGeneratorAdapter';
 function App() {
 
   const [isAdding, setAdding] = useState(false);
-  // const [todos, setTodos] = useState([] as string[]);
   const [newTodo, setNewTodo] = useState("");
   const persistence = new LocalStoragePersistenceAdapter() as PersistenceServices;
   const {todos, deleteTodo, addTodo} = useTodoStorageService(persistence, idGeneratorAdapter);
@@ -45,10 +44,6 @@ function App() {
     setAdding(false);
   };
 
-  const removeBtnHandler= (e: any) => {
-    deleteTodo(e.target.id);
-  };
-
   return (
     <div>
       <div style={{backgroundColor: 'lightpink', padding: '12px'}}>
@@ -69,7 +64,7 @@ function App() {
             <button
               style={{WebkitMarginEnd: '8px'}}
               id={todo.id}
-              onClick={removeBtnHandler}
+              onClick={() => deleteTodo(todo.id)}
             >
               delete 
             </button>
