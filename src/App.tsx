@@ -5,29 +5,26 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-
+import { useTodoStorageService } from './services/useTodoStorage';
+import LocalStoragePersistenceAdapter from "./services/localStoragePersistenceAdapter";
+import { PersistenceServices } from './application/persistanceService';
+import idGeneratorAdapter from './services/idGeneratorAdapter';
 function App() {
+
   const [isAdding, setAdding] = useState(false);
-  const [todos, setTodos] = useState([] as string[]);
-  const [newTodo, setNewTodo] = useState('');
-
-  useEffect(() => {
-    const hasOpenedBefore = localStorage.getItem('hasOpenedBefore');
-
-    if (!hasOpenedBefore) {
-      updateTodos([
-        'This is a sample todo to get you started. It is only added if it is your first time opening our awesome app!',
-      ]);
-      localStorage.setItem('hasOpenedBefore', 'true');
+  // const [todos, setTodos] = useState([] as string[]);
+  const [newTodo, setNewTodo] = useState("");
+  const persistence = new LocalStoragePersistenceAdapter() as PersistenceServices;
+  const {todos, deleteTodo, addTodo} = useTodoStorageService(persistence, idGeneratorAdapter);
+  
+    useEffect(() => {
+    const hasOpenedBefore = persistence.get('hasOpenedBefore');
+    if (!hasOpenedBefore) {      
+      addTodo({text:'this is a welcome todo'});
+      persistence.set('hasOpenedBefore', 'true');
     }
-    loadTodos()
     
   }, []);
-
-  const loadTodos = () => {
-    const todos = JSON.parse(localStorage.getItem('todos') || '[]') as string[];
-    setTodos(todos);
-  }
 
   const todoInputHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value);
@@ -44,21 +41,12 @@ function App() {
 
   const submitHandler: FormEventHandler = (e) => {
     e.preventDefault();
-    updateTodos([...todos, newTodo]);
+    addTodo({text:newTodo});
     setAdding(false);
-    setNewTodo('');
   };
 
-  const removeBtnHandler = (index: number) => {
-    const clone = [...todos];
-
-    clone.splice(index, 1);
-    updateTodos(clone);
-  };
-
-  const updateTodos = (todos: string[]) => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-    setTodos(todos);
+  const removeBtnHandler= (e: any) => {
+    deleteTodo(e.target.id);
   };
 
   return (
@@ -76,15 +64,16 @@ function App() {
       )}
 
       <ol>
-        {todos.map((t, index) => (
-          <li key={t}>
+        {todos.map(todo => (
+          <li key={todo.id}>
             <button
               style={{WebkitMarginEnd: '8px'}}
-              onClick={() => removeBtnHandler(index)}
+              id={todo.id}
+              onClick={removeBtnHandler}
             >
-              X
+              delete 
             </button>
-            <span>{t}</span>
+            <span>{todo.text}</span>
           </li>
         ))}
       </ol>
