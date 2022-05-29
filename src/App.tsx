@@ -9,6 +9,7 @@ import { useTodoStorageService } from './services/useTodoStorage';
 import LocalStoragePersistenceAdapter from "./services/localStoragePersistenceAdapter";
 import { PersistenceServices } from './application/persistanceService';
 import idGeneratorAdapter from './services/idGeneratorAdapter';
+import { useIntroductionService } from './services/useIntroductionService';
 function App() {
 
   const [isAdding, setAdding] = useState(false);
@@ -16,14 +17,8 @@ function App() {
   const persistence = new LocalStoragePersistenceAdapter() as PersistenceServices;
   const {todos, deleteTodo, addTodo} = useTodoStorageService(persistence, idGeneratorAdapter);
   
-    useEffect(() => {
-    const hasOpenedBefore = persistence.get('hasOpenedBefore');
-    if (!hasOpenedBefore) {      
-      addTodo({text:'this is a welcome todo'});
-      persistence.set('hasOpenedBefore', 'true');
-    }
-    
-  }, []);
+  useIntroductionService(persistence, useTodoStorageService(persistence, idGeneratorAdapter));
+
 
   const todoInputHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
     setNewTodo(e.target.value);
