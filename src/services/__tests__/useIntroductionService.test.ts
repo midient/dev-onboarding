@@ -12,14 +12,6 @@ describe("Introduction Service", () => {
         await persistence.deleteAll();
     })
 
-    test.skip('should check if the user has opened before', async () => {
-        const {result, waitForNextUpdate} = renderHook(() => useIntroductionService(persistence, useTodoStorageService(persistence, idGen)));
-        await waitForNextUpdate();
-
-        const res = JSON.parse(await persistence.get("hasOpenedBefore") || "false");
-        expect(res).toBe(true);
-    });
-
     test('should add hasOpenedBefore on first visit', async () => {
         const {result, waitForNextUpdate} = renderHook(() => useIntroductionService(persistence, useTodoStorageService(persistence, idGen)));
         await waitForNextUpdate();
