@@ -531,3 +531,16 @@ and `key.value.module.ts`
 })
 export class KeyValueModule {}
 ```
+
+### TODO
+
+2. Add docker and docker compose
+3. Connect the frontend to the backend by adding a RemotePersistenceAdapter implementing PersistenceService. Inject the the remote persistence into the app instead of local persistence.
+4. Add redis to the backend by creating a RedisKeyValueStorageAdapter implementing the KeyValueStorageService. Inject the RedisKeyValueStorageAdapter into the nest controller instead of the InMemoryKeyValueStorageAdapter. this is so that horizontal scaling can be accomplished (scale your backend to more than 2 services in docker compose and add an envoy load balancer in front of them).
+5. Add prisma and postgresql to the backend. Create a TodoDbService in applications and implement it in services as TodoDbAdapter.
+6. Make a crud for todo in io level.
+7. Update the frontend to use the new Rest api instead of key value persistence. Add TodoApiService and use it instead of persistence service in todo storage service.
+8. Migrate the api to Nest Graphql
+9. Add auth to graphql and rest apis (read auth guide on nestjs, use passportjs)
+10. Add websocket api (plain ws package, not socket.io)
+11. Notify the frontend of todo addition and deletion via websocket. Display the messages on frontend. Use kafka for messaging on the backend (so that your servers can scale horizontally).
