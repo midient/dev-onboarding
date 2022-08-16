@@ -543,4 +543,5 @@ export class KeyValueModule {}
 8. Migrate the api to Nest Graphql
 9. Add auth to graphql and rest apis (read auth guide on nestjs, use passportjs)
 10. Add websocket api (plain ws package, not socket.io)
-11. Notify the frontend of todo addition and deletion via websocket. Display the messages on frontend. Use kafka for messaging on the backend (so that your servers can scale horizontally).
+11. Watch [this](https://www.youtube.com/watch?v=LN_HcJVbySw&ab_channel=HusseinNasser) video to learn kafka.
+12. Notify the frontend of todo addition and deletion via websocket. Display the messages on frontend. Use kafka for messaging on the backend (so that your servers can scale horizontally).
